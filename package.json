@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "**Microservices made simple — tested end‑to‑end with Playwright.**",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "start": "concurrently \"node gateway/gatewayindex.js\" \"node user-service/user-service.js\" \"node order-service/order-service.js\" \"npx serve ui\""
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Mukuldev21/MicroPlayDemo.git"
@@ -18,7 +20,9 @@
   "homepage": "https://github.com/Mukuldev21/MicroPlayDemo#readme",
   "devDependencies": {
     "@playwright/test": "^1.57.0",
-    "@types/node": "^24.10.2"
+    "@types/node": "^24.10.2",
+    "concurrently": "^9.2.1",
+    "serve": "^14.2.5"
   },
   "dependencies": {
     "express": "^5.2.1",

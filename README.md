@@ -34,6 +34,16 @@ Playwright test suite ensuring reliability, regression coverage, and user‑jour
 ---
 
 ## 🚀 How to Run
+
+### Quick Start (Recommended)
+Run all services and the UI concurrently with a single command:
+```bash
+npm install
+npm start
+```
+
+### Manual Setup
+If you prefer to run services individually:
 1. Install dependencies:
    ```bash
    npm install express node-fetch
