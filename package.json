@@ -1,0 +1,27 @@
+{
+  "name": "microplaydemo",
+  "version": "1.0.0",
+  "description": "**Microservices made simple — tested end‑to‑end with Playwright.**",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mukuldev21/MicroPlayDemo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Mukuldev21/MicroPlayDemo/issues"
+  },
+  "homepage": "https://github.com/Mukuldev21/MicroPlayDemo#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^24.10.2"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "node-fetch": "^3.3.2"
+  }
+}
