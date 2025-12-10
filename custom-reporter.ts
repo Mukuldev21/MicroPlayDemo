@@ -78,8 +78,8 @@ class CustomEmailReporter implements Reporter {
 <meta charset="UTF-8">
 <style>
     :root {
-        --bg-body: #f8f9fa;
-        --bg-card: #ffffff;
+        --bg-body: #f0f2f5;
+        --bg-card: #fbfbfb;
         --text-main: #2c3e50;
         --text-muted: #7f8c8d;
         --primary: #2980b9;
@@ -142,7 +142,7 @@ class CustomEmailReporter implements Reporter {
 <body>
     <div class="container">
         <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
-        <h2>MicroServices Enterprise Report</h2>
+        <h2>MicroPlay Enterprise Report</h2>
         <div class="meta">Executed on ${date} • Duration: ${duration}s</div>
 
         <div class="kpi-grid">

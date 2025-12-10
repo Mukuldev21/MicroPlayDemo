@@ -17,15 +17,15 @@
             const data = await res.json();
             document.getElementById("output").innerHTML = `
         <h2>Users</h2>
-        <ul>${data.users.map(u => `<li>${u.name}</li>`).join("")}</ul>
+        <ul>${data.users.length ? data.users.map(u => `<li>${u.name}</li>`).join("") : "<li>No users found</li>"}</ul>
         <h2>Orders</h2>
-        <ul>${data.orders.map(o => `<li>${o.item}</li>`).join("")}</ul>
+        <ul>${data.orders.length ? data.orders.map(o => `<li>${o.item}</li>`).join("") : "<li>No orders placed yet</li>"}</ul>
         <h2>Products</h2>
-        <ul>${data.products.map(p => `<li>${p.name}</li>`).join("")}</ul>
+        <ul>${data.products.length ? data.products.map(p => `<li>${p.name}</li>`).join("") : "<li>No products available</li>"}</ul>
         <h2>Payments</h2>
-        <ul>${data.payments.map(Py => `<li>${Py.status}: $${Py.amount}</li>`).join("")}</ul>
+        <ul>${data.payments.length ? data.payments.map(Py => `<li style="color: ${Py.status === 'Failed' ? 'red' : 'black'}">${Py.status}: $${Py.amount}</li>`).join("") : "<li>No transaction history</li>"}</ul>
         <h2>Reviews</h2>
-        <ul>${data.reviews.map(r => `<li>${r.rating}⭐: ${r.comment}</li>`).join("")}</ul>
+        <ul>${data.reviews.length ? data.reviews.map(r => `<li>${r.rating}⭐: ${r.comment}</li>`).join("") : "<li>No reviews yet</li>"}</ul>
       `;
         }
     </script>
