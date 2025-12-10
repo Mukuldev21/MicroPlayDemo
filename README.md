@@ -55,6 +55,10 @@ If you prefer to run services individually:
         node order-service/index.js
         node gateway/index.js
 
+### UI Access
+The UI will be accessible at: `http://localhost:3003`
+
+
 3. Serve UI:
 
         npx serve ui

@@ -1,6 +1,8 @@
 const express = require("express");
 const fetch = require("node-fetch");
 const app = express();
+const cors = require("cors");
+app.use(cors());
 
 app.get("/data", async (req, res) => {
     const users = await fetch("http://localhost:3001/users").then(r => r.json());
