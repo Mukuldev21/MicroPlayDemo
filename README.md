@@ -11,19 +11,16 @@ Demonstrating scalable architecture, gateway aggregation, and robust end-to-end 
 
 ## 🏗 System Architecture
 
-This project simulates a **Production-Ready Distributed System** where the UI decouples from backend services via a unifying API Gateway.
+**Data Flow Overview**:
+`User` → `Frontend UI` → `API Gateway` → `Microservices Cluster`
 
-```mermaid
-graph TD
-    User((User)) -->|HTTP| UI[Frontend UI<br/>Port 3003]
-    UI -->|Fetch /data| Gateway[API Gateway<br/>Port 3000]
-    
-    subgraph Backend Microservices
-        Gateway -->|REST| US[User Service<br/>Port 3001]
-        Gateway -->|REST| OS[Order Service<br/>Port 3002]
-        Gateway -->|REST| PS[Product Service<br/>Port 3004]
-    end
-```
+1.  **Frontend UI**: The user interacts with the web interface.
+2.  **API Gateway**: All requests go through this single entry point.
+3.  **Microservices Cluster**: The gateway routes requests to the specific service:
+    *   **User Service**
+    *   **Order Service**
+    *   **Product Service**
+    *   *(Scalable to add more services...)*
 
 ### 🚀 Key Features
 - **Gateway Pattern**: Aggregates data from multiple sources (Users, Orders, Products) into a single response.
