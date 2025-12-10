@@ -37,10 +37,9 @@ Playwright test suite ensuring reliability, regression coverage, and user‑jour
 
 ### Quick Start (Recommended)
 Run all services and the UI concurrently with a single command:
-```bash
-npm install
-npm start
-```
+
+    npm install
+    npm start
 
 ### Manual Setup
 If you prefer to run services individually:
@@ -66,5 +65,11 @@ The UI will be accessible at: `http://localhost:3003`
 4. Run Playwright tests:
 
         npx playwright test
+
+### API Testing
+To test the microservices directly (bypassing the UI):
+```bash
+npx playwright test tests/api.spec.ts
+```
 
 
