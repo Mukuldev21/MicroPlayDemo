@@ -13,20 +13,34 @@
 
     <script>
         async function loadData() {
-            const res = await fetch("http://localhost:3000/data");
-            const data = await res.json();
-            document.getElementById("output").innerHTML = `
-        <h2>Users</h2>
-        <ul>${data.users.length ? data.users.map(u => `<li>${u.name}</li>`).join("") : "<li>No users found</li>"}</ul>
-        <h2>Orders</h2>
-        <ul>${data.orders.length ? data.orders.map(o => `<li>${o.item}</li>`).join("") : "<li>No orders placed yet</li>"}</ul>
-        <h2>Products</h2>
-        <ul>${data.products.length ? data.products.map(p => `<li>${p.name}</li>`).join("") : "<li>No products available</li>"}</ul>
-        <h2>Payments</h2>
-        <ul>${data.payments.length ? data.payments.map(Py => `<li style="color: ${Py.status === 'Failed' ? 'red' : 'black'}">${Py.status}: $${Py.amount}</li>`).join("") : "<li>No transaction history</li>"}</ul>
-        <h2>Reviews</h2>
-        <ul>${data.reviews.length ? data.reviews.map(r => `<li>${r.rating}⭐: ${r.comment}</li>`).join("") : "<li>No reviews yet</li>"}</ul>
-      `;
+            try {
+                const res = await fetch("http://localhost:3000/data");
+                if (!res.ok) throw new Error("Failed to load data");
+                const data = await res.json();
+
+                const renderList = (items, mapper, emptyMsg) =>
+                    (items && items.length) ? items.map(mapper).join("") : `<li>${emptyMsg}</li>`;
+
+                document.getElementById("output").innerHTML = `
+                    <h2>Users</h2>
+                    <ul>${renderList(data.users, u => `<li>${u.name || 'Unknown User'}</li>`, "No users found")}</ul>
+                    
+                    <h2>Orders</h2>
+                    <ul>${renderList(data.orders, o => `<li>${o.item || 'Unknown Item'}</li>`, "No orders placed yet")}</ul>
+                    
+                    <h2>Products</h2>
+                    <ul>${renderList(data.products, p => `<li>${p.name || 'Unknown Product'}</li>`, "No products available")}</ul>
+                    
+                    <h2>Payments</h2>
+                    <ul>${renderList(data.payments, Py => `<li style="color: ${Py.status === 'Failed' ? 'red' : 'black'}">${Py.status || 'Unknown'}: $${Py.amount || '0'}</li>`, "No transaction history")}</ul>
+                    
+                    <h2>Reviews</h2>
+                    <ul>${renderList(data.reviews, r => `<li>${r.rating}⭐: ${r.comment || 'No comment'}</li>`, "No reviews yet")}</ul>
+                `;
+            } catch (err) {
+                console.error(err);
+                document.getElementById("output").innerHTML = `<p style="color: red; font-weight: bold;">Error: Could not load data. Please try again later.</p>`;
+            }
         }
     </script>
 </body>

@@ -1,6 +1,6 @@
 # Test Cases (Enterprise Standard)
 
-This project contains **19** automated test cases covering UI, API, Mocking, Business Scenarios, and Performance.
+This project contains **25** automated test cases covering UI, API, Mocking, Business Scenarios, Security, Performance, and Resilience.
 
 ## 🟢 End-to-End (E2E) UI Tests
 | ID | Module | Description | File |
@@ -13,6 +13,20 @@ This project contains **19** automated test cases covering UI, API, Mocking, Bus
 | **TC017** | Customer 360 | Verify aggregated view of all domains (Users, Orders, Products, Payments, Reviews) | `tests/business-scenarios.spec.ts` |
 | **TC018** | Payment Risks | Verify visual alert (Red Color) for failed transactions | `tests/business-scenarios.spec.ts` |
 | **TC019** | Onboarding | Verify empty states for new user (No Data) | `tests/business-scenarios.spec.ts` |
+
+## 🛡 Resilience & Error Handling
+| ID | Module | Description | File |
+| :--- | :--- | :--- | :--- |
+| **TC023** | Resilience | Verify UI handles **Partial Outage** (one service null) | `tests/resilience.spec.ts` |
+| **TC024** | Resilience | Verify UI handles **Global Outage** (Gateway down) | `tests/resilience.spec.ts` |
+| **TC025** | Resilience | Verify UI handles **Corrupt Data** (missing fields) | `tests/resilience.spec.ts` |
+
+## 🔒 Security & Stress Tests
+| ID | Module | Description | File |
+| :--- | :--- | :--- | :--- |
+| **TC020** | Stress | Verify UI handles **50+ Items** without crashing | `tests/security-performance.spec.ts` |
+| **TC021** | Robustness | Verify UI handles **Long Text** (200+ chars) | `tests/security-performance.spec.ts` |
+| **TC022** | Security | Verify **XSS Protection** (Script Injection) | `tests/security-performance.spec.ts` |
 
 ## 🔵 API Tests
 | ID | Module | Description | File |
