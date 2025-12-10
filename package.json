@@ -4,7 +4,7 @@
   "description": "**Microservices made simple — tested end‑to‑end with Playwright.**",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"node gateway/gatewayindex.js\" \"node user-service/user-service.js\" \"node order-service/order-service.js\" \"npx serve ui -p 3003\""
+    "start": "concurrently \"node gateway/gatewayindex.js\" \"node user-service/user-service.js\" \"node order-service/order-service.js\" \"node product-service/product-service.js\" \"npx serve ui -p 3003\""
   },
   "repository": {
     "type": "git",
