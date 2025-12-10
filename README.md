@@ -1,83 +1,92 @@
-# MicroPlay Demo
-**Microservices made simple — tested end‑to‑end with Playwright.**
+# MicroPlay Demo Architecture
 
+![Status](https://img.shields.io/badge/Status-Active-success)
 [![Node.js](https://img.shields.io/badge/Node.js-18.x-green?logo=node.js)](https://nodejs.org/)
 [![Playwright](https://img.shields.io/badge/Tested%20with-Playwright-blue?logo=microsoft)](https://playwright.dev/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Status](https://img.shields.io/badge/Status-Active-success)]()
-[![Made with ❤️](https://img.shields.io/badge/Made%20with-❤️-red)]()
+
+**An Enterprise-Grade Microservices Reference Implementation.**
+Demonstrating scalable architecture, gateway aggregation, and robust end-to-end validation strategies.
 
 ---
 
-## 📖 About
-MicroPlay Demo is an enterprise‑style reference project that demonstrates how distributed microservices can be orchestrated, integrated, and validated through modern end‑to‑end testing practices.
+## 🏗 System Architecture
 
-This environment simulates a production‑ready architecture with:
+This project simulates a **Production-Ready Distributed System** where the UI decouples from backend services via a unifying API Gateway.
 
-Independent services (Users & Orders) exposing RESTful APIs
-
-Gateway layer for service aggregation and unified access
-
-HTML‑based UI for lightweight client interaction
-
-Playwright test suite ensuring reliability, regression coverage, and user‑journey validation. [View all Test Cases](testcases.md).
-
----
-
-## 🛠 Technologies Used
-- **Node.js** (Express.js for services)
-- **HTML + JavaScript** (UI)
-- **Playwright** (end‑to‑end testing)
-- **npm** (package management)
-- **serve** (static file hosting)
-
----
-
-## 🚀 How to Run
-
-### Quick Start (Recommended)
-Run all services and the UI concurrently with a single command:
-
-    npm install
-    npm start
-
-### Manual Setup
-If you prefer to run services individually:
-1. Install dependencies:
-   ```bash
-   npm install express node-fetch
-   npm install -D @playwright/test serve
-   ```
-2. Start services in separate terminals:
+```mermaid
+graph TD
+    User((User)) -->|HTTP| UI[Frontend UI<br/>Port 3003]
+    UI -->|Fetch /data| Gateway[API Gateway<br/>Port 3000]
     
-        node user-service/index.js
-        node order-service/index.js
-        node gateway/index.js
-
-### UI Access
-The UI will be accessible at: `http://localhost:3003`
-
-
-3. Serve UI:
-
-        npx serve ui
-
-4. Run Playwright tests:
-
-        npx playwright test
-
-### API Testing
-To test the microservices directly (bypassing the UI):
-```bash
-npx playwright test tests/api.spec.ts
+    subgraph Backend Microservices
+        Gateway -->|REST| US[User Service<br/>Port 3001]
+        Gateway -->|REST| OS[Order Service<br/>Port 3002]
+        Gateway -->|REST| PS[Product Service<br/>Port 3004]
+    end
 ```
 
-### Advanced Testing
-We have added extensive tests to verify resilience and edge cases:
-- **Negative API Tests**: `tests/api-negative.spec.ts` (Verifies 404s and response times)
-- **UI Mocking**: `tests/ui-mock.spec.ts` (Verifies UI logic by mocking backend responses)
+### 🚀 Key Features
+- **Gateway Pattern**: Aggregates data from multiple sources (Users, Orders, Products) into a single response.
+- **Microservices Proper**: Independent Node.js services running on dedicated ports.
+- **Resilient Frontend**: Decoupled UI with CORS-enabled secure communication.
+- **Enterprise Testing**: Validated with a multi-layer Playwright suite (E2E, API, Mock, Perf).
+
+---
+
+## 🛠 Service Mesh
+
+| Service | Port | Description |
+| :--- | :--- | :--- |
+| **API Gateway** | `3000` | Aggregation layer; Single Entry Point. |
+| **User Service** | `3001` | Manages user identities. |
+| **Order Service** | `3002` | Tracks customer orders. |
+| **UI** | `3003` | Customer-facing Dashboard. |
+| **Product Service** | `3004` | **[NEW]** Product catalog management. |
+
+---
+
+## 🧪 Enterprise Testing Strategy
+
+Employed a **Test Pyramid** approach to ensure quality at speed.
+Full details available in [Test Cases Documentation](testcases.md).
+
+### 1. API Contract Testing (Integration)
+Directly validates microservice responses and schemas.
+- **File**: `tests/api.spec.ts`
+- **Coverage**: Json Schema Validation, Data Integrity.
+
+### 2. Resilience & Performance (Negative)
+Ensures system stability under failure conditions.
+- **File**: `tests/api-negative.spec.ts`
+- **Coverage**: 404 Handling, Response Time SLAs (<200ms).
+
+### 3. Frontend Isolation (Mocking)
+Tests UI logic without backend dependencies.
+- **File**: `tests/ui-mock.spec.ts`
+- **Coverage**: Edge cases, Empty States, Backend Outages.
+
+### 4. End-to-End User Journey (E2E)
+Validates the complete flow from User -> UI -> Gateway -> Services.
+- **File**: `tests/e2e-ui.spec.ts`
+- **Coverage**: Full system integration check.
+
+---
+
+## ⚡ Quick Start
+
+Bring up the entire stack (Gateway + 3 Microservices + UI) in one command.
+
+```bash
+# 1. Install Dependencies
+npm install
+
+# 2. Launch Ecosystem
+npm start
+```
+*Access the UI at: [http://localhost:3003](http://localhost:3003)*
+
+### Run Automated Tests
+Execute the full regression suite:
 ```bash
 npx playwright test
 ```
-
-
