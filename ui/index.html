@@ -22,6 +22,10 @@
         <ul>${data.orders.map(o => `<li>${o.item}</li>`).join("")}</ul>
         <h2>Products</h2>
         <ul>${data.products.map(p => `<li>${p.name}</li>`).join("")}</ul>
+        <h2>Payments</h2>
+        <ul>${data.payments.map(Py => `<li>${Py.status}: $${Py.amount}</li>`).join("")}</ul>
+        <h2>Reviews</h2>
+        <ul>${data.reviews.map(r => `<li>${r.rating}⭐: ${r.comment}</li>`).join("")}</ul>
       `;
         }
     </script>

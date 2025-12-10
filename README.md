@@ -20,6 +20,8 @@ Demonstrating scalable architecture, gateway aggregation, and robust end-to-end 
     *   **User Service**
     *   **Order Service**
     *   **Product Service**
+    *   **Payment Service**
+    *   **Review Service**
     *   *(Scalable to add more services...)*
 
 ### 🚀 Key Features
@@ -38,7 +40,9 @@ Demonstrating scalable architecture, gateway aggregation, and robust end-to-end 
 | **User Service** | `3001` | Manages user identities. |
 | **Order Service** | `3002` | Tracks customer orders. |
 | **UI** | `3003` | Customer-facing Dashboard. |
-| **Product Service** | `3004` | **[NEW]** Product catalog management. |
+| **Product Service** | `3004` | Product catalog management. |
+| **Payment Service** | `3005` | Tracks transaction statuses. |
+| **Review Service** | `3006` | Manages customer feedback. |
 
 ---
 

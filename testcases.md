@@ -14,12 +14,16 @@ This project contains **12** automated test cases covering UI, API, Mocking, and
 | **TC003** | Order | Verify Order Service returns 200 & valid JSON | `tests/api.spec.ts` |
 | **TC004** | Product | Verify Product Service returns 200 & valid JSON | `tests/api.spec.ts` |
 | **TC005** | Gateway | Verify Gateway aggregates all data correctly | `tests/api.spec.ts` |
+| **TC013** | Payment | Verify Payment Service returns 200 & valid JSON | `tests/api.spec.ts` |
+| **TC014** | Review | Verify Review Service returns 200 & valid JSON | `tests/api.spec.ts` |
 
 ## 🔴 Negative & Performance Tests
 | ID | Module | Description | File |
 | :--- | :--- | :--- | :--- |
 | **TC006** | User | Verify 404 for invalid User endpoint | `tests/api-negative.spec.ts` |
 | **TC007** | Product | Verify 404 for invalid Product endpoint | `tests/api-negative.spec.ts` |
+| **TC015** | Payment | Verify 404 for invalid Payment endpoint | `tests/api-negative.spec.ts` |
+| **TC016** | Review | Verify 404 for invalid Review endpoint | `tests/api-negative.spec.ts` |
 | **TC008** | Gateway | Verify 404 for unknown Gateway route | `tests/api-negative.spec.ts` |
 | **TC009** | Order | Verify 404 for invalid Order endpoint | `tests/api-negative.spec.ts` |
 | **TC010** | Perf | Verify User Service responds < 200ms | `tests/api-negative.spec.ts` |
