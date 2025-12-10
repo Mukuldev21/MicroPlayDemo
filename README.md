@@ -10,11 +10,17 @@
 ---
 
 ## 📖 About
-MicroPlay Demo is a lightweight learning project showcasing how **microservices** can be built, integrated, and tested using **Playwright**. It includes:
-- Two backend services (Users & Orders)
-- A gateway service for aggregation
-- A simple HTML UI
-- Playwright tests for end‑to‑end validation
+MicroPlay Demo is an enterprise‑style reference project that demonstrates how distributed microservices can be orchestrated, integrated, and validated through modern end‑to‑end testing practices.
+
+This environment simulates a production‑ready architecture with:
+
+Independent services (Users & Orders) exposing RESTful APIs
+
+Gateway layer for service aggregation and unified access
+
+HTML‑based UI for lightweight client interaction
+
+Playwright test suite ensuring reliability, regression coverage, and user‑journey validation.
 
 ---
 
