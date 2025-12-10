@@ -41,7 +41,7 @@ Demonstrating scalable architecture, gateway aggregation, and robust end-to-end 
 | **Order Service** | `3002` | Tracks customer orders. |
 | **UI** | `3003` | Customer-facing Dashboard. |
 | **Product Service** | `3004` | Product catalog management. |
-| **Payment Service** | `3005` | Tracks transaction statuses. |
+| **Payment Service** | `3008` | Tracks transaction statuses. |
 | **Review Service** | `3006` | Manages customer feedback. |
 
 ---

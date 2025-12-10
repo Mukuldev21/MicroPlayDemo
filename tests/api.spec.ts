@@ -33,7 +33,7 @@ test.describe("Microservices API Integration", { tag: "@API" }, () => {
 
     test.describe("Extension Services", () => {
         test("TC013: Payment Service should return payments", { tag: "@Integration" }, async ({ request }) => {
-            const response = await request.get("http://localhost:3005/payments");
+            const response = await request.get("http://localhost:3008/payments");
             expect(response.status()).toBe(200);
             const body = await response.json();
             expect(body).toBeTruthy();

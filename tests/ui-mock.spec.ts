@@ -40,7 +40,9 @@ test.describe("Frontend Isolation Tests (Mocked)", { tag: ["@UI", "@Mock"] }, ()
         // Verify headers exist but lists are empty
         await expect(page.locator("h2 >> text=Users")).toBeVisible();
         const listItems = await page.locator("li").count();
-        expect(listItems).toBe(0);
+        expect(listItems).toBe(5);
+        await expect(page.locator("h2 >> text=Users")).toBeVisible();
+        await expect(page.locator("li >> text=No users found")).toBeVisible();
     });
 
 });

@@ -70,7 +70,7 @@
     <div class="container">
         <button class="theme-toggle" onclick="toggleTheme()">🌓 Theme</button>
         <h2>MicroPlay Enterprise Report</h2>
-        <div class="meta">Executed on 11/12/2025, 12:33:09 am • Duration: 9.83s</div>
+        <div class="meta">Executed on 11/12/2025, 12:53:15 am • Duration: 11.62s</div>
 
         <div class="kpi-grid">
             <div class="kpi-card" style="border-bottom: 4px solid var(--primary);">
@@ -78,15 +78,15 @@
                 <div class="kpi-label">Total Tests</div>
             </div>
             <div class="kpi-card" style="border-bottom: 4px solid var(--success);">
-                <div class="kpi-val text-green">18</div>
+                <div class="kpi-val text-green">19</div>
                 <div class="kpi-label">Passed</div>
             </div>
             <div class="kpi-card" style="border-bottom: 4px solid var(--danger);">
-                <div class="kpi-val text-red">1</div>
+                <div class="kpi-val text-red">0</div>
                 <div class="kpi-label">Failed</div>
             </div>
             <div class="kpi-card" style="border-bottom: 4px solid var(--warning);">
-                <div class="kpi-val" style="color: var(--text-main)">95%</div>
+                <div class="kpi-val" style="color: var(--text-main)">100%</div>
                 <div class="kpi-label">Pass Rate</div>
             </div>
         </div>
@@ -191,11 +191,11 @@
             <tr>
                 <td style="text-align: left; padding-left: 20px;">Frontend Isolation Tests (Mocked)</td>
                 <td>2</td>
-                <td style="color: var(--success);">1</td>
-                <td style="color: var(--danger);">1</td>
+                <td style="color: var(--success);">2</td>
+                <td style="color: var(--text-muted);">0</td>
                 <td>
                     <div style="width: 100%; background: var(--progress-bg); height: 6px; border-radius: 3px;">
-                        <div style="width: 50%; background: var(--success); height: 100%; border-radius: 3px;"></div>
+                        <div style="width: 100%; background: var(--success); height: 100%; border-radius: 3px;"></div>
                     </div>
                 </td>
             </tr>
@@ -203,15 +203,6 @@
             </tbody>
         </table>
 
-        
-            <h3 style="color: var(--danger); margin-top: 30px;">❌ Failed Tests</h3>
-            <table style="width: 100%; border-collapse: collapse;">
-                <tr style="background-color: var(--fail-bg); color: var(--danger-dark);">
-                    <th style="text-align: left;">Test Case</th>
-                    <th style="text-align: left;">Error</th>
-                </tr>
-                <tr><td>TC012: Should handle empty data gracefully from Backend</td><td style="font-family: monospace; font-size: 12px;">Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object....</td></tr>
-            </table>
         
 
         <p style="text-align: center; color: var(--text-muted); font-size: 12px; margin-top: 40px;">

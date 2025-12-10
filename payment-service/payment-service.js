@@ -8,4 +8,4 @@ app.get("/payments", (req, res) => {
     ]);
 });
 
-app.listen(3005, () => console.log("Payment service running on port 3005"));
+app.listen(3008, () => console.log("Payment service running on port 3008"));

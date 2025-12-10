@@ -24,7 +24,7 @@ test.describe("Resilience & Performance Tests", { tag: ["@API", "@Negative"] }, 
         });
 
         test("TC015: Payment Service should return 404 for invalid endpoint", async ({ request }) => {
-            const response = await request.get("http://localhost:3005/no-payments");
+            const response = await request.get("http://localhost:3008/no-payments");
             expect(response.status()).toBe(404);
         });
 
