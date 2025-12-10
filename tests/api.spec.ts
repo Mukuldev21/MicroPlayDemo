@@ -24,9 +24,21 @@ test.describe("Microservices API Tests", () => {
         const response = await request.get("http://localhost:3000/data");
         expect(response.status()).toBe(200);
         const body = await response.json();
+
         expect(body).toHaveProperty("users");
         expect(body).toHaveProperty("orders");
+
+        // Schema checks
         expect(Array.isArray(body.users)).toBeTruthy();
+        body.users.forEach((u: any) => {
+            expect(typeof u.id).toBe("number");
+            expect(typeof u.name).toBe("string");
+        });
+
         expect(Array.isArray(body.orders)).toBeTruthy();
+        body.orders.forEach((o: any) => {
+            expect(typeof o.id).toBe("number");
+            expect(typeof o.item).toBe("string");
+        });
     });
 });

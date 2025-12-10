@@ -20,7 +20,7 @@ Gateway layer for service aggregation and unified access
 
 HTML‑based UI for lightweight client interaction
 
-Playwright test suite ensuring reliability, regression coverage, and user‑journey validation.
+Playwright test suite ensuring reliability, regression coverage, and user‑journey validation. [View all Test Cases](testcases.md).
 
 ---
 
@@ -70,6 +70,14 @@ The UI will be accessible at: `http://localhost:3003`
 To test the microservices directly (bypassing the UI):
 ```bash
 npx playwright test tests/api.spec.ts
+```
+
+### Advanced Testing
+We have added extensive tests to verify resilience and edge cases:
+- **Negative API Tests**: `tests/api-negative.spec.ts` (Verifies 404s and response times)
+- **UI Mocking**: `tests/ui-mock.spec.ts` (Verifies UI logic by mocking backend responses)
+```bash
+npx playwright test
 ```
 
 
