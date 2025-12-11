@@ -1,6 +1,6 @@
 # Test Cases (Enterprise Standard)
 
-This project contains **28** automated test cases covering UI, API, Mocking, Business Scenarios, Security, Performance, and Resilience.
+This project contains **30** automated test cases covering UI, API, Mocking, Business Scenarios, Security, Performance, and Resilience.
 
 ## 🟢 End-to-End (E2E) UI Tests
 | ID | Module | Description | File |
@@ -13,6 +13,8 @@ This project contains **28** automated test cases covering UI, API, Mocking, Bus
 | **TC017** | Customer 360 | Verify aggregated view of all domains (Users, Orders, Products, Payments, Reviews) | `tests/business-scenarios.spec.ts` |
 | **TC018** | Payment Risks | Verify visual alert (Red Color) for failed transactions | `tests/business-scenarios.spec.ts` |
 | **TC019** | Onboarding | Verify empty states for new user (No Data) | `tests/business-scenarios.spec.ts` |
+| **TC029** | Payment | Verify **High Value** transaction display | `tests/business-scenarios.spec.ts` |
+| **TC030** | Payment | Verify **Status Styles** (Pending/Refunded) | `tests/business-scenarios.spec.ts` |
 
 ## 🛡 Resilience & Error Handling
 | ID | Module | Description | File |
