@@ -89,7 +89,7 @@ test.describe("Security & Performance Scenarios", { tag: ["@Security", "@Perform
         // await expect(page.locator("li").first()).toHaveText(maliciousName);
     });
 
-    test("TC023: Performance - Heavy Load - Verify handling of 1000 items", async ({ page }) => {
+    test("TC026: Performance - Heavy Load - Verify handling of 1000 items", async ({ page }) => {
         // Mock a very large dataset
         const hugeUsers = Array.from({ length: 1000 }, (_, i) => ({ id: i, name: `User ${i}` }));
 
@@ -120,7 +120,7 @@ test.describe("Security & Performance Scenarios", { tag: ["@Security", "@Perform
         expect(loadTime).toBeLessThan(5000);
     });
 
-    test("TC024: Resilience - Slow Network Response", async ({ page }) => {
+    test("TC027: Resilience - Slow Network Response", async ({ page }) => {
         // Simulate a 3-second network delay
         await page.route("http://localhost:3000/data", async route => {
             // Wait 3 seconds before fulfilling
@@ -146,7 +146,7 @@ test.describe("Security & Performance Scenarios", { tag: ["@Security", "@Perform
         await expect(page.locator("text=Slow User")).toBeVisible({ timeout: 5000 });
     });
 
-    test("TC025: Robustness - Malformed Data (Null/Missing fields)", async ({ page }) => {
+    test("TC028: Robustness - Malformed Data (Null/Missing fields)", async ({ page }) => {
         // Simulate "bad" data that might break a fragile UI
         await page.route("http://localhost:3000/data", async route => {
             await route.fulfill({
