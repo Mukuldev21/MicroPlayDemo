@@ -1,11 +1,14 @@
 # Test Cases (Enterprise Standard)
 
-This project contains **32** automated test cases covering UI, API, Mocking, Business Scenarios, Security, Performance, and Resilience.
+This project contains **35** automated test cases covering UI, API, Mocking, Business Scenarios, Security, Performance, and Resilience.
 
 ## 🟢 End-to-End (E2E) UI Tests
 | ID | Module | Description | File |
 | :--- | :--- | :--- | :--- |
 | **TC001** | E2E | Load Data and verify Users, Orders, and Products | `tests/e2e-ui.spec.ts` |
+| **TC033** | UI | Verify **Mobile Viewport** Responsiveness | `tests/e2e-ui.spec.ts` |
+| **TC034** | E2E | Verify **Cross-Service Integrity** (User+Order) | `tests/e2e-ui.spec.ts` |
+| **TC035** | Resilience | Verify **Idempotency** (Reload Data) | `tests/e2e-ui.spec.ts` |
 
 ## 🟣 Business Scenarios (Workflows)
 | ID | Module | Description | File |
