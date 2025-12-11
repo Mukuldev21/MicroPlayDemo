@@ -1,6 +1,6 @@
 # Test Cases (Enterprise Standard)
 
-This project contains **35** automated test cases covering UI, API, Mocking, Business Scenarios, Security, Performance, and Resilience.
+This project contains **38** automated test cases covering UI, API, Mocking, Business Scenarios, Security, Performance, and Resilience.
 
 ## 🟢 End-to-End (E2E) UI Tests
 | ID | Module | Description | File |
@@ -64,6 +64,14 @@ This project contains **35** automated test cases covering UI, API, Mocking, Bus
 | :--- | :--- | :--- | :--- |
 | **TC011** | Mock | Verify UI displays **Mocked Data** correctly | `tests/ui-mock.spec.ts` |
 | **TC012** | Mock | Verify UI handles **Empty Data** gracefuly | `tests/ui-mock.spec.ts` |
+
+
+## 🏗 System Standards & Stability
+| ID | Module | Description | File |
+| :--- | :--- | :--- | :--- |
+| **TC036** | System | Verify **Security Headers** presence | `tests/system-standards.spec.ts` |
+| **TC037** | Perf | Verify **Concurrent Requests** (10x user load) | `tests/system-standards.spec.ts` |
+| **TC038** | API | Verify **Strict Schema** & Data Types | `tests/system-standards.spec.ts` |
 
 ---
 **Run All Tests:**
