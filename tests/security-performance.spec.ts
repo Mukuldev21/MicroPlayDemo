@@ -89,4 +89,91 @@ test.describe("Security & Performance Scenarios", { tag: ["@Security", "@Perform
         // await expect(page.locator("li").first()).toHaveText(maliciousName);
     });
 
+    test("TC023: Performance - Heavy Load - Verify handling of 1000 items", async ({ page }) => {
+        // Mock a very large dataset
+        const hugeUsers = Array.from({ length: 1000 }, (_, i) => ({ id: i, name: `User ${i}` }));
+
+        await page.route("http://localhost:3000/data", async route => {
+            await route.fulfill({
+                json: {
+                    users: hugeUsers,
+                    orders: [],
+                    products: [],
+                    payments: [],
+                    reviews: []
+                }
+            });
+        });
+
+        const startTime = Date.now();
+        await page.goto("http://localhost:3003");
+        await page.click("text=Load Data");
+
+        // Verify count
+        const count = await page.locator("h2:has-text('Users') + ul > li").count();
+        expect(count).toBe(1000);
+
+        // Simple performance assertions
+        const loadTime = Date.now() - startTime;
+        console.log(`Time to load 1000 items: ${loadTime}ms`);
+        // Expect reasonable performance, e.g., under 5 seconds for this simple render
+        expect(loadTime).toBeLessThan(5000);
+    });
+
+    test("TC024: Resilience - Slow Network Response", async ({ page }) => {
+        // Simulate a 3-second network delay
+        await page.route("http://localhost:3000/data", async route => {
+            // Wait 3 seconds before fulfilling
+            await new Promise(resolve => setTimeout(resolve, 3000));
+            await route.fulfill({
+                json: {
+                    users: [{ id: 1, name: "Slow User" }],
+                    orders: [],
+                    products: [],
+                    payments: [],
+                    reviews: []
+                }
+            });
+        });
+
+        await page.goto("http://localhost:3003");
+
+        // Ensure the app didn"t crash during the wait and eventually loads
+        await page.click("text=Load Data");
+
+        // Depending on UI, might check for a loading spinner here.
+        // For now, just verify data eventually appears.
+        await expect(page.locator("text=Slow User")).toBeVisible({ timeout: 5000 });
+    });
+
+    test("TC025: Robustness - Malformed Data (Null/Missing fields)", async ({ page }) => {
+        // Simulate "bad" data that might break a fragile UI
+        await page.route("http://localhost:3000/data", async route => {
+            await route.fulfill({
+                json: {
+                    // One user is fine, one has null name, one has missing name
+                    users: [
+                        { id: 1, name: "Good User" },
+                        { id: 2, name: null },
+                        { id: 3 } // name undefined
+                    ],
+                    orders: [],
+                    products: [],
+                    payments: [],
+                    reviews: []
+                }
+            });
+        });
+
+        await page.goto("http://localhost:3003");
+        await page.click("text=Load Data");
+
+        // UI should show "Good User" and handle the others gracefully
+        await expect(page.locator("text=Good User")).toBeVisible();
+
+        // We verify that 3 items are listed, even if some have empty text
+        const count = await page.locator("h2:has-text('Users') + ul > li").count();
+        expect(count).toBe(3);
+    });
+
 });
